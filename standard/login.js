@@ -10,5 +10,8 @@ module.exports = function(username, password) {
               info.login = !/登录/i.test(title);
             })
             .getCookie()
-            .then(session => (info.session = session.value) && info);
+            .then(session => {
+              info.session = session[0].value;
+              return info;
+            });
 };
